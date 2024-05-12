@@ -1,0 +1,50 @@
+﻿@page "/"
+
+@inherits HomeBase
+
+<PageTitle>Restaurants</PageTitle>
+
+
+
+<form>
+    Restaurant
+    <input @bind="tmpName"/>
+    Note
+    <input @bind="tmpNote"/>
+    Link to Menu
+    <input @bind="tmpUrl"/>
+    <button class="btn btn-primary" onclick="@AddItem(tmpName,tmpNote,tmpUrl)">Save</button>
+</form>
+
+@if (dataList.Count > 0)
+{
+    <ul class="list-group mt-3">
+        @foreach (var item in dataList)
+        {
+            <li class="list-group-item">
+                @item.Id
+                @item.Restaurant
+                @item.Note
+                @item.Url
+                @item.Like
+                @item.Dislike
+                @* <button class="btn btn-danger btn-sm float-right" @onclick="() => RemoveItem(item)">Remove</button> *@
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No items in the list.</p>
+}
+@code{
+    public string tmpName;
+    public string tmpNote;
+    public string tmpUrl;
+
+}
+
+   
+
+    
+
